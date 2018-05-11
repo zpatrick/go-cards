@@ -9,8 +9,5 @@ func NewHumanPlayer(name string) Player {
 }
 
 func NewComputerPlayer(name string) Player {
-        return nil
+	return nil
 }
-
-
-

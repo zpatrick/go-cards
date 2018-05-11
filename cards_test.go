@@ -6,22 +6,25 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestNewStandardDeck(t *testing.T) {
+func TestNewStandardCards(t *testing.T) {
 	assert.Equal(t, NewDeck(Suits(), Ranks(), StandardAceHigh), NewStandardDeck())
 }
 
-func TestDeckDeal(t *testing.T) {
+func TestCardsDeal(t *testing.T) {
 	deck := NewStandardDeck()
 	for card := deck.Deal(); len(deck) > 0; card = deck.Deal() {
 		assert.False(t, deck.Contains(card))
 	}
+
+	// dealing on an empty deck should return a zero-value card
+	assert.Equal(t, Card{}, deck.Deal())
 }
 
-func TestDeckShuffle(t *testing.T) {
+func TestCardsShuffle(t *testing.T) {
 	deck := NewStandardDeck()
-	before := append(Deck{}, deck...)
+	before := append(Cards{}, deck...)
 	deck.Shuffle()
-	after := append(Deck{}, deck...)
+	after := append(Cards{}, deck...)
 
 	// this isn't the most elegant thing in the world,
 	// but it seems reasonable to say if N number of cards
