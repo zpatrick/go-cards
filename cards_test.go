@@ -1,6 +1,7 @@
 package cards
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -38,5 +39,20 @@ func TestCardsShuffle(t *testing.T) {
 
 	if unchanged > 10 {
 		t.Errorf("%d cards did not change position in the deck", unchanged)
+	}
+}
+
+func TestCardsSort(t *testing.T) {
+	deck := NewStandardDeck()
+	deck.Shuffle()
+	deck.Sort()
+
+	for i := 0; i < len(deck)-2; i++ {
+		if deck[i].Value > deck[i+1].Value {
+			text := fmt.Sprintf("card at index %d (%#v) ", i, deck[i])
+			text += fmt.Sprintf("has a greater value than ")
+			text += fmt.Sprintf("card at index %d (%#v) ", i+1, deck[i+1])
+			t.Fatal(text)
+		}
 	}
 }

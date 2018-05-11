@@ -2,6 +2,7 @@ package cards
 
 import (
 	"math/rand"
+	"sort"
 )
 
 // Cards is a named type for []Card.
@@ -69,4 +70,27 @@ func (c Cards) Shuffle() {
 	for i, j := range rand.Perm(len(c)) {
 		c[i], c[j] = c[j], c[i]
 	}
+}
+
+// Len reports the number of elements in c.
+func (c Cards) Len() int {
+	return len(c)
+}
+
+// Less returns true if and only if the value the card at index i
+// is less than the value of the card at index j
+func (c Cards) Less(i, j int) bool {
+	return c[i].Value < c[j].Value
+}
+
+// Swap swaps cards with indexes i and j.
+func (c Cards) Swap(i, j int) {
+	c[i], c[j] = c[j], c[i]
+}
+
+// Sort sorts the cards by their value.
+// This is shorthand for:
+//  sort.Sort(c)
+func (c Cards) Sort() {
+	sort.Sort(c)
 }
