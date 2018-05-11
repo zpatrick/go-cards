@@ -77,7 +77,7 @@ func (c Cards) Len() int {
 	return len(c)
 }
 
-// Less returns true if and only if the value the card at index i
+// Less returns true if and only if the value of the card at index i
 // is less than the value of the card at index j
 func (c Cards) Less(i, j int) bool {
 	return c[i].Value < c[j].Value
