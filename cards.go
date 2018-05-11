@@ -53,15 +53,15 @@ func (c Cards) ContainsFunc(f func(card Card) bool) bool {
 	return false
 }
 
-// Deal will remove the last card from c and return it.
+// Deal will remove the first card from c and return it.
 // A zero-value Card will be returned if len(c) == 0.
 func (c *Cards) Deal() Card {
 	if c == nil || len(*c) == 0 {
 		return Card{}
 	}
 
-	card := (*c)[len(*c)-1]
-	(*c) = (*c)[:len(*c)-1]
+	card := (*c)[0]
+	(*c) = (*c)[1:]
 	return card
 }
 
