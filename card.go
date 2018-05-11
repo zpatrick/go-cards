@@ -72,11 +72,8 @@ func Suits() []Suit {
 
 // A Card represents a single playing card in the standard French deck
 type Card struct {
-	Suit Suit
-	Rank Rank
-	// Value represents the card's worth.
-	// This can be set by the user to help make calculating scores easier.
-	// It is recommended to use a ValueMapper to set the value of each card when creating a new deck.
+	Suit  Suit
+	Rank  Rank
 	Value int
 }
 
@@ -89,19 +86,19 @@ func (c Card) String() string {
 type ValueMapper func(s Suit, r Rank) int
 
 // StandardAceHigh is a ValueMapper that maps ranks with the following values (regardless of suit):
-// Two:   2
-// Three: 3
-// Four:  4
-// Five:  5
-// Six:   6
-// Seven: 7
-// Eight: 8
-// Nine:  9
-// Ten:   10
-// Jack:  11
-// Queen: 12
-// King:  13
-// Ace:   14
+//  Two:   2
+//  Three: 3
+//  Four:  4
+//  Five:  5
+//  Six:   6
+//  Seven: 7
+//  Eight: 8
+//  Nine:  9
+//  Ten:   10
+//  Jack:  11
+//  Queen: 12
+//  King:  13
+//  Ace:   14
 func StandardAceHigh(s Suit, r Rank) int {
 	switch r {
 	case Two:
@@ -136,19 +133,19 @@ func StandardAceHigh(s Suit, r Rank) int {
 }
 
 // StandardAceLow is a ValueMapper that maps ranks with the following values (regardless of suit):
-// Ace:   1
-// Two:   2
-// Three: 3
-// Four:  4
-// Five:  5
-// Six:   6
-// Seven: 7
-// Eight: 8
-// Nine:  9
-// Ten:   10
-// Jack:  11
-// Queen: 12
-// King:  13
+//  Ace:   1
+//  Two:   2
+//  Three: 3
+//  Four:  4
+//  Five:  5
+//  Six:   6
+//  Seven: 7
+//  Eight: 8
+//  Nine:  9
+//  Ten:   10
+//  Jack:  11
+//  Queen: 12
+//  King:  13
 func StandardAceLow(s Suit, r Rank) int {
 	if r == Ace {
 		return 1

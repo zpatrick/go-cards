@@ -4,7 +4,8 @@ import (
 	"math/rand"
 )
 
-// Cards is a named type for a slice of card objects.
+// Cards is a named type for []Card.
+// This type can be used to represent a deck or hand of cards.
 type Cards []Card
 
 // NewDeck creates a slice of Cards containing one card for each suit-rank pair.
@@ -27,7 +28,8 @@ func NewDeck(suits []Suit, ranks []Rank, valueMapper ValueMapper) Cards {
 }
 
 // NewStandardDeck returns a standard 52-card deck with Ace-high values.
-// This is shorthand for `NewDeck(Suits(), Ranks(), StandardAceHigh)`.
+// This is shorthand for:
+//  NewDeck(Suits(), Ranks(), StandardAceHigh)
 func NewStandardDeck() Cards {
 	return NewDeck(Suits(), Ranks(), StandardAceHigh)
 }
