@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestNewStandardCards(t *testing.T) {
+func TestNewStandardDeck(t *testing.T) {
 	assert.Equal(t, NewDeck(Suits(), Ranks(), StandardAceHigh), NewStandardDeck())
 }
 
